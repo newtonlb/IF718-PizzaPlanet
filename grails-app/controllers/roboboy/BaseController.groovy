@@ -9,4 +9,7 @@ abstract class BaseController{
   def renderHash(hash){
     render (hash as JSON);
   }
+  def printHash(hash){
+    println(hash as JSON)
+  }
 }

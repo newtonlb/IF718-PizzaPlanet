@@ -5,9 +5,6 @@ import roboboy.Usuario;
 
 class Pedido {
   Pizza pizza;
+  static embedded = ['pizza']
   static belongsTo = [ usuario: Usuario ]
-
-  static constraints = {
-    sabor2 nullable: true
-  }
 }
