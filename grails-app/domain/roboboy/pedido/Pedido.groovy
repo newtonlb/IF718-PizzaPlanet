@@ -3,9 +3,7 @@ import grails.rest.*;
 import roboboy.Usuario;
 
 class Pedido {
-  String sabor1;
-  String sabor2;
-  String borda;
+  Pizza pizza;
   static belongsTo = [ usuario: Usuario ]
 
   static constraints = {
