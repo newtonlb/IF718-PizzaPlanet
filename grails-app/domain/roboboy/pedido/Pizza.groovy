@@ -1,4 +1,5 @@
-package roboboy.pedido
+package roboboy.pedido;
+
 
 class Pizza {
 

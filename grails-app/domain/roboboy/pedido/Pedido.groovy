@@ -1,4 +1,5 @@
-package roboboy
+package roboboy.pedido;
+
 import grails.rest.*;
 import roboboy.Usuario;
 
