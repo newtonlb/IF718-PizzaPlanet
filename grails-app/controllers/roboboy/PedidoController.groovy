@@ -1,4 +1,5 @@
 package roboboy
+import roboboy.pedido.Pizza;
 
 class PedidoController extends RestfulController{
 
