@@ -31,3 +31,19 @@
 
 # "temporary" build files
 /target
+
+build/
+.DS_Store
+.gradle
+build/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+*Icon*
+*icon*
+
+
