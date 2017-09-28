@@ -1,4 +1,4 @@
-package roboboy.pedido.Pizza;
+package roboboy.pedido;
 
 
 class Borda {
