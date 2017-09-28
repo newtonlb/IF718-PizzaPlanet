@@ -45,5 +45,6 @@ build/
 .classpath
 *Icon*
 *icon*
-
-
+gradle*
+.gradle*
+build*

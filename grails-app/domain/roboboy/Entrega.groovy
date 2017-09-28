@@ -1,7 +1,6 @@
 package roboboy
 import grails.rest.*;
-import roboboy.Pedido;
-
+import roboboy.pedido.*;
 class Entrega {
     String endereco;
     static belongsTo = [ pedido: Pedido ]

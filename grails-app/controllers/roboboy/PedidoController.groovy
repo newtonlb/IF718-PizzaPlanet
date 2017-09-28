@@ -1,4 +1,5 @@
 package roboboy
+import roboboy.pedido.*;
 
 class PedidoController extends RestfulController{
 
@@ -10,26 +11,41 @@ class PedidoController extends RestfulController{
     }
 
     def findBy(String attr, String id){
+      def pedido;
       switch(attr){
         case 'id':
-          return Pedido.findById(id);
+          pedido = Pedido.findById(id);;
         case 'usuario':
-          return Pedido.findByUsuario(id);
+          def usuario = Usuario.findById(id);
+          pedido = Pedido.findByUsuario(usuario);
       }
+
+      return pedido;
     }
     def list(){
-      return Usuario.list();
+      return Pedido.list();
     }
     def newRecord(){
 
       def data = this.getRequestJson();
-      // def usuario = Usuario.findById(data.cliente)
+      def cliente = Usuario.findById(data.cliente)
+      def pizza = this.montaPizza(data);
 
       return new Pedido(
-        sabor1: data.sabor1,
-        sabor2: data.sabor2,
-        borda: data.borda,
-        usuario: data.cliente
+        pizza: pizza,
+        usuario: cliente
         );
+    }
+
+    def montaPizza(data){
+      def pizza = new Pizza(data.sabor1);
+
+      if(data.sabor2)
+        pizza = new DoisSabores(pizza, data.sabor2);
+
+      if(data.borda)
+        pizza = new ComBorda(pizza, data.borda)
+
+        return pizza;
     }
 }

@@ -1,12 +1,10 @@
-package roboboy
-import grails.rest.*;
+package roboboy.pedido;
+
 import roboboy.Usuario;
 
 class Pedido {
-  Pizza pizza;
-  static belongsTo = [ usuario: Usuario ]
+  APizza pizza;
 
-  static constraints = {
-    sabor2 nullable: true
-  }
+  static embedded = ['pizza']
+  static belongsTo = [ usuario: Usuario ]
 }
