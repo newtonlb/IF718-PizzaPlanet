@@ -12,31 +12,40 @@ class BootStrap {
         telefone: "99899.9899",
         senha: 'im',
         tipo: 1
-      )).save();
+      )).save(flush:true);
       (u2 = new Usuario(
         nome: "Niltu, saido crossfit",
         login: "niltu",
         telefone: "99899.9899",
         senha: 'ni',
         tipo: 0
-      )).save();
+      )).save(flush:true);
 
       def pizza;
 
-      pizza = new Pizza("Três Queijos");
+      pizza = new Pizza("Três Queijos").save(flush:true);
       pizza = new ComBorda(pizza, "Catupiry");
       (new Pedido(
         pizza: pizza,
         usuario: u1
-      )).save();
+      )).save(flush:true);
 
       pizza = new Pizza("Nutella");
+      println(pizza.getDescricao())
+
       pizza = new DoisSabores(pizza, "Banana");
+      println(pizza.getDescricao())
+
       pizza = new ComBorda(pizza, "Chocolate");
-      (new Pedido(
+      println(pizza.getDescricao())
+
+      def pedido;
+      (pedido = new Pedido(
         pizza: pizza,
         usuario: u2
-      )).save();
+      )).save(flush:true);
+
+      println(pedido.pizza);
     }
     def destroy = {
     }

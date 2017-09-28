@@ -1,18 +1,23 @@
 package roboboy.pedido
 
-class ComBorda extends Pizza{
-    private Pizza pizza;
+class ComBorda extends APizza{
+    private APizza pizza;
     private String borda;
+    static embedded = ['pizza']
 
 
-    ComBorda(Pizza pizza, String borda){
+    ComBorda(APizza pizza, String borda){
       this.pizza = pizza
       this.borda = borda
     }
-    def getDescricao(){
-      this.pizza.getDescricao() + " & borda de ${this.borda}";
+
+    def getExtras(){
+      return this.pizza.getExtras() + " & borda de ${this.borda}";
     }
-    def getPrice(){
-      return this.pizza.getPrice() + 7.5;
+    def getPreco(){
+      return this.pizza.getPreco() + 7.5;
+    }
+    def getSabor(){
+      return this.pizza.getSabor();
     }
 }

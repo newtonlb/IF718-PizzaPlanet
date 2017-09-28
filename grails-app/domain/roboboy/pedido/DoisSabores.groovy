@@ -1,18 +1,24 @@
 package roboboy.pedido
 
-class DoisSabores extends Pizza{
-    private Pizza pizza;
+class DoisSabores extends APizza{
+    private APizza pizza;
     private String extra;
+    static embedded = ['pizza']
 
 
-    DoisSabores(Pizza pizza, String extra){
+    DoisSabores(APizza pizza, String extra){
       this.pizza = pizza
       this.extra = extra
     }
-    def getPrice(){
-      return this.pizza.getPrice() + 10;
-    }
+
     def getSabor(){
       return this.pizza.getSabor() + " / ${this.extra}";
     }
+    def getPreco(){
+      return this.pizza.getPreco() + 10;
+    }
+    def getExtras(){
+      return this.pizza.getExtras();
+    }
+
 }

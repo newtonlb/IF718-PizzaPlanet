@@ -19,7 +19,6 @@ class PedidoController extends RestfulController{
           def usuario = Usuario.findById(id);
           pedido = Pedido.findByUsuario(usuario);
       }
-      this.printHash(pedido)
 
       return pedido;
     }
