@@ -1,6 +1,6 @@
 package roboboy
-import grails.rest.*;
-import roboboy.pedido.Pedido;
+import roboboy.pedido.*;
+import roboboy.usuario.*;
 
 class Usuario {
   String login;
@@ -8,8 +8,8 @@ class Usuario {
   String telefone;
   String senha;
   int tipo;
-
+  static hasMany = [pedidos:Pedido]
     static constraints = {
-      tipo inList: [0 /*estabelecimento*/, 1 /*cliente*/]
+      tipo inList: [UsuarioConfig.PIZZARIA_CODE /*estabelecimento*/, UsuarioConfig.CLIENTE_CODE /*cliente*/]
     }
 }

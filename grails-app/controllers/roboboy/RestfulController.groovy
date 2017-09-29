@@ -6,7 +6,7 @@ abstract class RestfulController extends BaseController{
     def show(){
 
       def specific = this.requestingSpecific();
-      
+
       if(specific){
        render this.findBy(specific.attr, specific.id) as JSON;
       }else{
@@ -19,15 +19,16 @@ abstract class RestfulController extends BaseController{
     def save() {
 
       def record = this.newRecord();
-
-      println("Pedindo para salvar:")
-      println((request.JSON as JSON))
+      println(record);
 
       if(record.save()){
-       render record as JSON
+        println("Salvando " + this.getControllerName())
       }else{
-        render ([erro: "desconhecido"] as JSON)
+        record = [erro: "Erro ao Salvar"];
       }
+
+      this.renderHash(record);
+
      }
 
     def requestingSpecific(){

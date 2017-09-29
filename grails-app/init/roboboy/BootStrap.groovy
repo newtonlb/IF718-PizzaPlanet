@@ -1,25 +1,38 @@
 package roboboy
 import roboboy.*;
 import roboboy.pedido.*;
+import roboboy.usuario.*;
 
 class BootStrap {
 
     def init = { servletContext ->
       def u1, u2;
+
+      println("");
+      println("Cadastrando Usuarios");
+
       (u1 = new Usuario(
-        nome: "Igor, ViajaMais Q'Trabalha",
+        nome: "Igu, ViajaMais Q'Trabalha",
         login: "ivqt",
         telefone: "99899.9899",
         senha: 'im',
-        tipo: 1
-      )).save(flush:true);
+        tipo: UsuarioConfig.CLIENTE_CODE
+      )).save();
+
       (u2 = new Usuario(
-        nome: "Niltu, saido crossfit",
+        nome: "Niltu, Saido Crossfit",
         login: "niltu",
-        telefone: "99899.9899",
+        telefone: "8897.7887",
         senha: 'ni',
-        tipo: 0
-      )).save(flush:true);
+        tipo: UsuarioConfig.PIZZARIA_CODE
+      )).save();
+
+      println(u1);
+      println(u2);
+
+      println("");
+
+      println("Cadastrando Pedidos");
 
       def pizza;
       def pedido;
@@ -27,15 +40,21 @@ class BootStrap {
       pizza = new Pizza("Três Queijos")
       pizza = new ComBorda(pizza, "Catupiry")
       pedido = new Pedido(pizza: pizza, cliente:u1);
-      pedido.save(flush:true);
-
-      pizza = new Pizza("Nutella");
-      pizza = new DoisSabores(pizza, "Banana");
-      pizza = new ComBorda(pizza, "Chocolate");
-      pedido = new Pedido(pizza: pizza, cliente: u2);
       pedido.save();
 
-      println(pizza.getDescricaoCompleta());
+      println(pedido.pizza.getDescricaoCompleta());
+
+
+      pizza = new Pizza("Nutella")
+      pizza = new DoisSabores(pizza, "Banana");
+      pizza = new ComBorda(pizza, "Chocolate");
+      pedido = new Pedido(pizza: pizza, cliente:u2);
+      pedido.save();
+
+      println(pedido.pizza.getDescricaoCompleta());
+
+      println("");
+
     }
     def destroy = {
     }

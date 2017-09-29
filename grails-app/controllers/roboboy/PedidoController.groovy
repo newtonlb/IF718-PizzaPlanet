@@ -30,11 +30,13 @@ class PedidoController extends RestfulController{
       def data = this.getRequestJson();
       def cliente = Usuario.findById(data.cliente)
       def pizza = this.montaPizza(data);
-
-      return new Pedido(
+      def pedido = new Pedido(
         pizza: pizza,
         usuario: cliente
-        );
+      );
+      println(cliente);
+      println(pedido);
+      return pedido;
     }
 
     def montaPizza(data){
@@ -46,6 +48,13 @@ class PedidoController extends RestfulController{
       if(data.borda)
         pizza = new ComBorda(pizza, data.borda)
 
+
+        println("construindo pizza")
+        println(pizza.getDescricaoCompleta());
+
         return pizza;
+    }
+    def getName(){
+      return "Pedido";
     }
 }
