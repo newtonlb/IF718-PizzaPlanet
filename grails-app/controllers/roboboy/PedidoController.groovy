@@ -17,7 +17,7 @@ class PedidoController extends RestfulController{
           pedido = Pedido.findById(id);;
         case 'usuario':
           def usuario = Usuario.findById(id);
-          pedido = Pedido.findByUsuario(usuario);
+          pedido = Pedido.findByCliente(usuario);
       }
 
       return pedido;

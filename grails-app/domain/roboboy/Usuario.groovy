@@ -1,5 +1,6 @@
 package roboboy
 import grails.rest.*;
+import roboboy.pedido.Pedido;
 
 class Usuario {
   String login;

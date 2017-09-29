@@ -22,30 +22,20 @@ class BootStrap {
       )).save(flush:true);
 
       def pizza;
+      def pedido;
 
-      pizza = new Pizza("Três Queijos").save(flush:true);
-      pizza = new ComBorda(pizza, "Catupiry");
-      (new Pedido(
-        pizza: pizza,
-        usuario: u1
-      )).save(flush:true);
+      pizza = new Pizza("Três Queijos")
+      pizza = new ComBorda(pizza, "Catupiry")
+      pedido = new Pedido(pizza: pizza, cliente:u1);
+      pedido.save(flush:true);
 
       pizza = new Pizza("Nutella");
-      println(pizza.getDescricao())
-
       pizza = new DoisSabores(pizza, "Banana");
-      println(pizza.getDescricao())
-
       pizza = new ComBorda(pizza, "Chocolate");
-      println(pizza.getDescricao())
+      pedido = new Pedido(pizza: pizza, cliente: u2);
+      pedido.save();
 
-      def pedido;
-      (pedido = new Pedido(
-        pizza: pizza,
-        usuario: u2
-      )).save(flush:true);
-
-      println(pedido.pizza);
+      println(pizza.getDescricaoCompleta());
     }
     def destroy = {
     }

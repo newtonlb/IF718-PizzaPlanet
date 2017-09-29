@@ -3,7 +3,6 @@ package roboboy.pedido
 class DoisSabores extends APizza{
     private APizza pizza;
     private String extra;
-    static embedded = ['pizza']
 
 
     DoisSabores(APizza pizza, String extra){

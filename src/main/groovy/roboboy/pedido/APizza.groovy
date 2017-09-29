@@ -6,7 +6,7 @@ abstract class APizza{
     abstract def getPreco();
     abstract def getExtras();
     abstract def getSabor();
-    
+
     def getDescricao(){
       return this.getSabor() + "\n" + this.getExtras();
     }

@@ -6,5 +6,5 @@ class Pedido {
   APizza pizza;
 
   static embedded = ['pizza']
-  static belongsTo = [ usuario: Usuario ]
+  static belongsTo = [ cliente: Usuario ]
 }

@@ -3,7 +3,6 @@ package roboboy.pedido
 class ComBorda extends APizza{
     private APizza pizza;
     private String borda;
-    static embedded = ['pizza']
 
 
     ComBorda(APizza pizza, String borda){
