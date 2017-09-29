@@ -4,9 +4,13 @@ import roboboy.Usuario;
 import roboboy.pedido.Pizza
 
 class Pedido {
-  APizza pizza;
+  Pizza pizza;
+  Usuario cliente;
 
 
   static embedded = ['pizza']
-  static belongsTo = [ cliente: Usuario ]
+  Pedido(APizza pizza, Usuario cliente){
+    this.pizza = pizza.getPizza();
+    this.cliente = cliente;
+  }
 }

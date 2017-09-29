@@ -3,18 +3,31 @@ import java.text.DecimalFormat
 
 abstract class APizza{
 
-    abstract def getPreco();
-    abstract def getExtras();
-    abstract def getSabor();
+    abstract double getPreco();
+    abstract Map getExtras();
+    abstract String getSabor();
 
     def getDescricao(){
-      return this.getSabor() + "\n" + this.getExtras();
+      return  getSabor() + "\n" + getExtras().toMapString();
     }
 
     def getDescricaoCompleta(){
-      def moneyform = new DecimalFormat("\$##,###.##");
-      def price = moneyform.format(this.getPreco());
-
-      return this.getDescricao() + "\n" + price;
+      return getDescricao() + "\n" + getFormatedPreco();
     }
+
+    def getFormatedPreco(){
+      def moneyform = new DecimalFormat("\$##,###.##");
+      def price = moneyform.format(preco);
+      return price;
+    }
+
+    Pizza getPizza(){
+      return new Pizza(
+        sabor: getSabor(),
+        extra: getExtras(),
+        preco: getPreco()
+        );
+    }
+
+
 }

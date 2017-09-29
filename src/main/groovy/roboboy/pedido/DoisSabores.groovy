@@ -2,21 +2,22 @@ package roboboy.pedido
 
 class DoisSabores extends APizza{
     private APizza pizza;
-    private String extra;
+    private String sabor;
+    private double preco = 10;
 
 
-    DoisSabores(APizza pizza, String extra){
+    DoisSabores(APizza pizza, String sabor){
       this.pizza = pizza
-      this.extra = extra
+      this.sabor = sabor
     }
 
-    def getSabor(){
-      return this.pizza.getSabor() + " / ${this.extra}";
+    String getSabor(){
+      return this.pizza.getSabor() + " / ${this.sabor}";
     }
-    def getPreco(){
-      return this.pizza.getPreco() + 10;
+    double getPreco(){
+      return this.pizza.getPreco() + preco;
     }
-    def getExtras(){
+    Map getExtras(){
       return this.pizza.getExtras();
     }
 

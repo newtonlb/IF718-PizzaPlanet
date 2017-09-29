@@ -37,21 +37,20 @@ class BootStrap {
       def pizza;
       def pedido;
 
-      pizza = new Pizza("Três Queijos")
+      pizza = new PizzaBase("Três Queijos")
       pizza = new ComBorda(pizza, "Catupiry")
-      pedido = new Pedido(pizza: pizza, cliente:u1);
+      pedido = new Pedido(pizza, u1);
       pedido.save();
 
-      println(pedido.pizza.getDescricaoCompleta());
+      println(pizza.getDescricaoCompleta());
 
-
-      pizza = new Pizza("Nutella")
+      pizza = new PizzaBase("Nutella")
       pizza = new DoisSabores(pizza, "Banana");
       pizza = new ComBorda(pizza, "Chocolate");
-      pedido = new Pedido(pizza: pizza, cliente:u2);
+      pedido = new Pedido(pizza, u2);
       pedido.save();
 
-      println(pedido.pizza.getDescricaoCompleta());
+      println(pizza.getDescricaoCompleta());
 
       println("");
 

@@ -1,22 +1,27 @@
 package roboboy.pedido;
 
-class Pizza extends APizza{
-    private String sabor;
-    private double price = 30;
+class Pizza{
+  String sabor;
+  Map extra;
+  double preco;
+}
+class PizzaReader extends APizza{
+      String sabor;
+      Map extra;
+      double preco;
 
-
-    Pizza(String sabor){
-      this.sabor = sabor;
-    }
-
-    def getSabor(){
-      return this.sabor;
-    }
-    def getPreco(){
-      return this.price;
-    }
-    def getExtras(){
-      return '';
-    }
-
+      PizzaReader(Pizza pizza){
+        sabor = pizza.sabor;
+        extra = pizza.extra;
+        preco = pizza.preco;
+      }
+      Map getExtras(){
+        return extra;
+      }
+      double getPreco(){
+        return preco;
+      }
+      String getSabor(){
+        return sabor
+      }
 }

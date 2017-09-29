@@ -34,13 +34,11 @@ class PedidoController extends RestfulController{
         pizza: pizza,
         usuario: cliente
       );
-      println(cliente);
-      println(pedido);
       return pedido;
     }
 
     def montaPizza(data){
-      def pizza = new Pizza(data.sabor1);
+      def pizza = new PizzaBase(data.sabor1);
 
       if(data.sabor2)
         pizza = new DoisSabores(pizza, data.sabor2);

@@ -3,6 +3,7 @@ package roboboy.pedido
 class ComBorda extends APizza{
     private APizza pizza;
     private String borda;
+    private double preco = 7.5;
 
 
     ComBorda(APizza pizza, String borda){
@@ -10,13 +11,16 @@ class ComBorda extends APizza{
       this.borda = borda
     }
 
-    def getExtras(){
-      return this.pizza.getExtras() + " & borda de ${this.borda}";
+    Map getExtras(){
+      def extra = this.pizza.getExtras();
+      extra['borda'] = borda;
+
+      return  extra;
     }
-    def getPreco(){
-      return this.pizza.getPreco() + 7.5;
+    double getPreco(){
+      return this.pizza.getPreco() + preco;
     }
-    def getSabor(){
+    String getSabor(){
       return this.pizza.getSabor();
     }
 }

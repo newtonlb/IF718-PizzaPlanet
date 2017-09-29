@@ -19,7 +19,6 @@ abstract class RestfulController extends BaseController{
     def save() {
 
       def record = this.newRecord();
-      println(record);
 
       if(record.save()){
         println("Salvando " + this.getControllerName())
