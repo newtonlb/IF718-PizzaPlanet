@@ -13,10 +13,10 @@ class LoginController extends RestfulController {
 
     if(login){
       if(login.senha == data.senha){
-        session['user'] = [:]
-        session['user']['id'] = login.id;
-        session['user']['tipo'] = login.tipo;
-        session['user']['nome'] = login.tipo;
+        session['usuario'] = [:]
+        session['usuario']['id'] = login.id;
+        session['usuario']['tipo'] = login.tipo;
+        session['usuario']['nome'] = login.tipo;
 
         def redirect;
         if (login.tipo == UsuarioConfig.PIZZARIA_CODE)
@@ -27,7 +27,14 @@ class LoginController extends RestfulController {
 
 
 
-        this.renderHash ([error: false, tipo: login.tipo, login: true, redirect: redirect, nome: login.nome])
+        this.renderHash ([
+          error: false,
+          tipo: login.tipo,
+          login: true,
+          redirect: redirect,
+          nome: login.nome,
+          id:login.id
+          ])
       }else{
         this.renderError("Senha incorreta")
       }
