@@ -1,4 +1,5 @@
 package roboboy
+import roboboy.pedido.*;
 import grails.converters.JSON
 
 abstract class RestfulController extends BaseController{
@@ -6,12 +7,14 @@ abstract class RestfulController extends BaseController{
     def show(){
 
       def specific = this.requestingSpecific();
-
+      def target;
       if(specific){
-       render this.findBy(specific.attr, specific.id) as JSON;
+        target = this.findBy(specific.attr, specific.id);
       }else{
-       render this.list() as JSON;
+        target = this.list();
       }
+
+      this.renderHash(target);
     }
 
 

@@ -12,10 +12,10 @@ $(()=>{
   let cadbt = $('#cadastrar_btn');
   let cadIn = $('#cadastro_form input');
 
-  loginSetup();
+  pedidoSetup();
 
 
-  function loginSetup(){
+  function pedidoSetup(){
 
     buttn.click(ev=>{
       console.log("eii, fui clicado!")

@@ -13,7 +13,7 @@ class ComBorda extends APizza{
 
     Map getExtras(){
       def extra = this.pizza.getExtras();
-      extra['borda'] = borda;
+      extra['borda'] = this.borda;
 
       return  extra;
     }

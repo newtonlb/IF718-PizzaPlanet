@@ -3,6 +3,9 @@ import roboboy.pedido.*;
 
 class PedidoController extends RestfulController{
 
+    static final String PEDIDO_PIZZARIA_URL = '/pedido/pizzaria';
+    static final String PEDIDO_CLIENTE_URL  = '/pedido/cliente';
+
     def pizzaria(){
       render (view: "pizzaria")
     }
@@ -20,32 +23,49 @@ class PedidoController extends RestfulController{
           pedido = Pedido.findByCliente(usuario);
       }
 
+      pedido = this.openingRecord(pedido)
+
       return pedido;
     }
     def list(){
-      return Pedido.list();
+      return Pedido.list().collect{
+        return this.openingRecord(it)
+      };
     }
     def newRecord(){
 
       def data = this.getRequestJson();
       def cliente = Usuario.findById(data.cliente)
       def pizza = this.montaPizza(data);
+
+      def record;
+      //
+      // pizza = new PizzaBase("Três Queijos");
+      // pizza = new ComBorda(pizza, "Chocolate");
+      // pizza = new DoisSabores(pizza, "Banana");
+      // record = new Pedido(pizza, Usuario.findById(1));
+
+      // def pedido = record;
       def pedido = new Pedido(
-        pizza: pizza,
-        usuario: cliente
+        pizza,
+        cliente
       );
       return pedido;
     }
-
+    def openingRecord(pedido){
+      pedido = new PedidoReader(pedido);
+      return pedido
+    }
     def montaPizza(data){
-      def pizza = new PizzaBase(data.sabor1);
+      println(data);
 
-      if(data.sabor2)
+      def pizza = new PizzaBase(data.sabor1.trim());
+
+      if(data.sabor2.trim())
         pizza = new DoisSabores(pizza, data.sabor2);
 
-      if(data.borda)
+      if(data.borda.trim())
         pizza = new ComBorda(pizza, data.borda)
-
 
         println("construindo pizza")
         println(pizza.getDescricaoCompleta());

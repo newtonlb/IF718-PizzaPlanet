@@ -12,7 +12,7 @@ class BootStrap {
       println("Cadastrando Usuarios");
 
       (u1 = new Usuario(
-        nome: "Igu, ViajaMais Q'Trabalha",
+        nome: "Igor ViajaMais Q'Trabalha",
         login: "ivqt",
         telefone: "99899.9899",
         senha: 'im',
@@ -20,7 +20,7 @@ class BootStrap {
       )).save();
 
       (u2 = new Usuario(
-        nome: "Niltu, Saido Crossfit",
+        nome: "Nilton Saido Crossfit",
         login: "niltu",
         telefone: "8897.7887",
         senha: 'ni',

@@ -24,7 +24,7 @@ abstract class APizza{
     Pizza getPizza(){
       return new Pizza(
         sabor: getSabor(),
-        extra: getExtras(),
+        extras: getExtras().toMapString(),
         preco: getPreco()
         );
     }

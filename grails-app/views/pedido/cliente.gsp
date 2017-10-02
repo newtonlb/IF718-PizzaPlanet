@@ -12,8 +12,8 @@
 <center>
 <form name="pedido" action="#" method="post">
   <h1>Pedido</h1>
-  Primeira metade: <input type="text" name="metade1" placeholder="Muçarela"><br/>
-  Segunda metade: <input type="text" name="metade2" placeholder="Calabresa"><br/>
+  Primeira metade: <input type="text" name="metade1" placeholder="Muçarela" required><br/>
+  Segunda metade: <input type="text" name="metade2" placeholder="Opcional"><br/>
   Borda: <input type="text" name="border" placeholder="Sem borda"><br/>
     <p>Comments:</br></p>
 	  <textarea></textarea>
