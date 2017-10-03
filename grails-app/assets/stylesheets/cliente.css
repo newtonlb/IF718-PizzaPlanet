@@ -25,3 +25,17 @@ input{
   font-size:17px;
   font-weight:bold;
 }
+form.done{
+  filter: blur(1);
+}
+form{
+  transition: filter .5s;
+}
+form.done #preco{
+  opacity: 1;
+  filter: blur(0);
+}
+form #preco{
+  transition: opacity .5s;
+  opacity: 0;
+}

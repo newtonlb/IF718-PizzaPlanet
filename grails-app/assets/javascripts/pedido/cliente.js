@@ -1,75 +1,35 @@
 $(()=>{
 
-  let senha = $("#login_form input[name='senha']");
-  let login = $("#login_form input[name='login']");
-  let buttn = $("#submit");
-  let cadas = $("#cadastro_btn");
-  let modal = $('.modal');
-  let modcl = $('.modal_close');
-  let cadbt = $('#cadastrar_btn');
-  let cadIn = $('#cadastro_form input');
 
-  loginSetup();
-  modalSetup();
+  let form = $("form[name='pedido']");
+  let metade1 = $("form input[name='metade1']")
+  let metade2 = $("form input[name='metade2']")
+  let borda = $("form input[name='border']")
+
+  pedidoSetup();
 
 
-  function loginSetup(){
+  function pedidoSetup(){
 
-    function loginBts(){
-      if(senha.val() && login.val()){
-        buttn.removeClass("hidden")
-        cadas.addClass("hidden")
-      }
-      else{
-        buttn.addClass("hidden")
-        cadas.removeClass("hidden")
-      }
-    }
+    form.on('submit', (ev)=>{
+      ev.preventDefault();
 
-    senha.on('input', loginBts);
-    login.on('input', loginBts);
-
-    buttn.click(ev=>{
       let data = {
-        senha: senha.val(),
-        login: login.val()
+        sabor1: metade1.val(),
+        sabor2: metade2.val(),
+        borda: borda.val(),
+        cliente: getCookie('usuario[id]')
       }
 
-      post(`/login`, data, onLoginDone)
-    })
-  }
-  function modalSetup(){
-    cadas.click(ev => modal.addClass('visible'))
-    modcl.click(ev => modal.removeClass('visible'))
-    cadbt.click(ev => {
-      let data = {}
-      cadIn.each(function() {
-        let inp = $(this);
-
-        data[inp.attr('name')] = inp.val()
-      });
-
-      post(`/usuario`, data, (data, status) => {
-        login.val(data.login);
-        modcl.click();
-        onCadastroDone(data);
+      post('/pedido', data, function(retorno){
+        showMessage(`Total: ${retorno.pizza.preco}$`);
+        // setTimeout(()=>{
+        //   redirect(`/entrega/cliente/${retorno.id}`)
+        // }, 2000)
       })
+
+      return false;
     })
 
-    cadIn.each(function(){
-      $(this).on('input', ()=>{
-        cadIn.each(function(index){
-
-          if($(this).val()){
-            if(++index == cadIn.length)
-              cadbt.removeClass('hidden');
-          }
-          else{
-            cadbt.addClass('hidden');
-            return false;
-          }
-        })
-      })
-    });
   }
 });

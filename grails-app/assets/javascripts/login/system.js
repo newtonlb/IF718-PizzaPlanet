@@ -3,6 +3,16 @@ function onCadastroDone(data){
   console.dir(data)
 }
 function onLoginDone(data){
-  showMessage("Login Autorizado");
-  console.dir(data);
+console.dir(data)
+  setCookie('usuario[id]', data.id)
+  setCookie('usuario[nome]', data.nome)
+  setCookie('usuario[tipo]', data.tipo)
+
+  showMessage(data.nome);
+  setTimeout(()=>{
+    showMessage("Login Autorizado")
+  }, 1000)
+  setTimeout(()=>{
+    redirect(data.redirect);
+  }, 1000)
 }

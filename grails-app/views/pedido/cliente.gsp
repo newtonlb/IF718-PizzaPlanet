@@ -9,18 +9,16 @@
   <div id="wrapper">
   <div id="inputs">
   <div>
-<center><form name="pedido" action="#" method="post">
+<center>
+<form name="pedido" action="#" method="post" class="">
   <h1>Pedido</h1>
-  Primeira metade: <input type="text" name="half1" placeholder="Muçarela"><br/>
-  Segunda metade: <input type="text" name="half2" placeholder="Calabresa"><br/>
-    <p>Comments:</br></p>
-	  <textarea></textarea>
-	  <p></p>
-  <input type="submit" value="Submit" href="#">
+  Primeira metade (30$): <input type="text" name="metade1" placeholder="Muçarela" required><br/>
+  Segunda metade (+10$): <input type="text" name="metade2" placeholder="Opcional"><br/>
+  Borda (+7.50$): <input type="text" name="border" placeholder="Sem borda"><br/>
+  <input type="submit" name="submit" value="submit" href="#">
 </form>
 </div>
 </div>
 		<asset:javascript src="pedido/cliente.js" />
-		<asset:javascript src="login/gui.js" />
 </body>
 </html>

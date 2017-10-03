@@ -55,3 +55,18 @@ function showMessage(msg, cls = 'regular', tmp = 5000){
     sysmsg.html('');
   }, tmp)
 }
+function keyTransform(key){
+  return `roboboy[${key}]`;
+}
+function setCookie(key, value){
+    localStorage.setItem(keyTransform(key), value);
+}
+function getCookie(key){
+  return localStorage.getItem(keyTransform(key))
+}
+function deleteCookie(key){
+  setCookie(keyTransform(key), null)
+}
+function redirect(to){
+  document.location = to;
+}

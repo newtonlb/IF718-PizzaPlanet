@@ -1,5 +1,7 @@
 package roboboy
 
+import roboboy.usuario.*
+
 class LoginController extends RestfulController {
 
 
@@ -11,7 +13,28 @@ class LoginController extends RestfulController {
 
     if(login){
       if(login.senha == data.senha){
-        this.renderHash ([error: false, tipo: login.tipo, login: true])
+        session['usuario'] = [:]
+        session['usuario']['id'] = login.id;
+        session['usuario']['tipo'] = login.tipo;
+        session['usuario']['nome'] = login.tipo;
+
+        def redirect;
+        if (login.tipo == UsuarioConfig.PIZZARIA_CODE)
+          redirect = PedidoController.PEDIDO_PIZZARIA_URL;
+
+        else if (login.tipo == UsuarioConfig.CLIENTE_CODE)
+          redirect = PedidoController.PEDIDO_CLIENTE_URL;
+
+
+
+        this.renderHash ([
+          error: false,
+          tipo: login.tipo,
+          login: true,
+          redirect: redirect,
+          nome: login.nome,
+          id:login.id
+          ])
       }else{
         this.renderError("Senha incorreta")
       }
@@ -20,7 +43,6 @@ class LoginController extends RestfulController {
     }
    }
     def index() {
-
       render (view:"index")
     }
 
